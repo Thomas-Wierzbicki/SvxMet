@@ -1,0 +1,33 @@
+<VirtualHost *:80>
+    ServerName svxmet.tld
+    DocumentRoot /var/www/svxlink
+
+    <Directory /var/www/svxlink>
+        Options FollowSymLinks
+        AllowOverride None
+        Require all granted
+
+        # SPA-Fallback: nicht vorhandene Pfade auf index.html
+        RewriteEngine On
+        RewriteCond %{REQUEST_URI} !^/api/
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule . /index.html [L]
+    </Directory>
+
+    ProxyPreserveHost On
+    ProxyRequests Off
+    ProxyPass        /api http://127.0.0.1:3040/api
+    ProxyPassReverse /api http://127.0.0.1:3040/api
+
+    <Location /api/logs/stream>
+        ProxyPass        http://127.0.0.1:3040/api/logs/stream
+        ProxyPassReverse http://127.0.0.1:3040/api/logs/stream
+        Header set Cache-Control "no-cache"
+        SetEnv proxy-sendcl 1
+        SetEnv proxy-sendchunked 1
+    </Location>
+
+    ErrorLog ${APACHE_LOG_DIR}/svxweb_error.log
+    CustomLog ${APACHE_LOG_DIR}/svxweb_access.log combined
+</VirtualHost>
