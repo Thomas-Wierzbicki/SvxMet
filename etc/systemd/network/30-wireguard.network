@@ -1,0 +1,11 @@
+[Match]
+
+Name= WG1
+
+[Network]
+
+Address = 44.148.185.110/32
+
+[Route]
+Destination=44.128.0.0/10
+Scope=link

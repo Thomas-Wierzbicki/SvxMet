@@ -1,0 +1,22 @@
+[Unit]
+Description=SVXLink Web Backend (Node.js)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/svxweb
+ExecStart=/usr/bin/node /opt/svxweb/server.js
+Restart=on-failure
+Environment=PORT=3030
+Environment=SVX_SERVICE_NAME=svxlink
+Environment=SVX_CONFIG_DIR=/etc/svxlink
+Environment=SVX_ALLOWED_FILES=svxlink.conf,remotetrx.conf,modules.d/ModuleEchoLink.conf,modules.d/ModuleDtmfRepeater.conf,logic.tcl
+# Falls du ein DTMF-PTY verwendest:
+# Environment=SVX_DTMF_PTY=/dev/shm/dtmf_ctrl
+
+# User/Group anpassen, z. B. "svxlink" oder "node"
+User=svxlink
+Group=svxlink
+
+[Install]
+WantedBy=multi-user.target

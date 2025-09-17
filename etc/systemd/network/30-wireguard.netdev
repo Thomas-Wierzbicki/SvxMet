@@ -1,0 +1,13 @@
+[NetDev]
+Name=WG1
+Kind=wireguard
+
+[WireGuard]
+PrivateKey=2AbkTseqkkOqQmfp197JVDNhKfsXtNpI80A6sxt96XE=
+ListenPort=51820
+
+[WireGuardPeer]
+PublicKey=INH4XAn/3Z1bzEKqjZlPYrKnc8cPzOhJgdWwDnZ4WSU=
+AllowedIPs=44.128.0.0/10
+Endpoint=vpn.afu.rwth-aachen.de:46111
+PersistentKeepalive = 25
