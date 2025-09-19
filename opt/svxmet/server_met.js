@@ -8,7 +8,7 @@ import { parse } from "csv-parse/sync";
 import fs from "fs/promises";
 import path from "path";
 
-const SVXMET_VERSION = process.env.SVXMET_VERSION || "1709_1_3040";
+const SVXMET_VERSION = process.env.SVXMET_VERSION || "1909_1_3040";
 
 
 // Der Port, auf dem der Server läuft

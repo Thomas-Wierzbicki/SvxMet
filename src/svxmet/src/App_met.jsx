@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-const SVXMET_VERSION = "1709_1_map_#"; // Frontend-Version
+const SVXMET_VERSION = "1909_1_map_#"; // Frontend-Version
 
 /** Leaflet-Karten-Komponente mit Tooltip (temp, dewp, wdir, wspd, visib) */
 function MapSection({ lat, lon, name, zoom = 10, meteo }) {
